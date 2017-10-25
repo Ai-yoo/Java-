@@ -8,14 +8,34 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
   <head>
-    <title>$Title$</title>
+    <title>注册页面</title>
+    <link rel="stylesheet" href="https://cdn.bootcss.com/normalize/7.0.0/normalize.css">
+    <link href="css/input.css" rel="stylesheet" type="text/css" media="all" />
   </head>
   <body>
+  <div class="form">
   <form action="AddServlet" method="post">
-    用户名：<input name="username" type="text">
-    密码：<input name="password" type="text">
-    邮箱：<input name="email" type="text">
-    <input type="submit" value="提交">
+    <div class="int">
+      <label for="username">用户名:</label>
+      <!-- 为每个需要的元素添加required -->
+      <input type="text" id="username" class="required" />
+    </div>
+    <div class="int">
+      <label for="password">密码:</label>
+      <!-- 为每个需要的元素添加required -->
+      <input type="password" id="password" class="required" />
+    </div>
+    <div class="int">
+      <label for="email">邮箱:</label>
+      <input type="text" id="email" class="required" />
+    </div>
+    <div class="sub">
+    <input type="submit" value="提交" id="send">
+    <input type="reset" value="重置" id="res">
+    </div>
+  </div>
   </form>
+  <script src="https://cdn.bootcss.com/jquery/3.0.0/jquery.js"></script>
+  <script type="text/javascript" src="${pageContext.request.contextPath}/js/check.js"></script>
   </body>
 </html>
