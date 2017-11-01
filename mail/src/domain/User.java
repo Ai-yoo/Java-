@@ -3,20 +3,25 @@ package domain;
 import java.util.Date;
 
 public class User {
-//    private int id;
+    private int id;
     private String name;
     private String password;
-    private String email;
+    private int flag;
     private String randomcode;
-    private Object date;
-    private User user;
+    private Object addtime;
+    private String email;
 
-    public User getUser() {
-        return user;
+    public User(String name, String password, int flag, String email, String randomcode, Date addtime) {
+        this.name = name;
+        this.password = password;
+        this.flag=flag;
+        this.email = email;
+        this.randomcode = randomcode;
+        this.addtime = addtime;
     }
 
-    public void setUser(User user) {
-        this.user = user;
+    public User() {
+
     }
 
     public String getRandomcode() {
@@ -27,32 +32,21 @@ public class User {
         this.randomcode = randomcode;
     }
 
-    public Object getDate() {
-        return date;
+    public Object getAddtime() {
+        return addtime;
     }
 
-    public void setDate(Object date) {
-        this.date = date;
+    public void setAddtime(Object addtime) {
+        this.addtime = addtime;
     }
 
-    public User(String name, String password, String email, String randomcode, Date date) {
-        this.name = name;
-        this.password = password;
-        this.email = email;
-        this.randomcode = randomcode;
-        this.date = date;
+    public int getId() {
+        return id;
     }
 
-    public User() {
+    public void setId(int id) {
+        this.id = id;
     }
-
-//    public int getId() {
-//        return id;
-//    }
-//
-//    public void setId(int id) {
-//        this.id = id;
-//    }
 
     public String getName() {
         return name;
@@ -69,8 +63,17 @@ public class User {
     public void setPassword(String password) {
         this.password = password;
     }
+
     public String getEmail() {
         return email;
+    }
+
+    public int getFlag() {
+        return flag;
+    }
+
+    public void setFlag(int flag) {
+        this.flag = flag;
     }
 
     public void setEmail(String email) {
@@ -80,11 +83,13 @@ public class User {
     @Override
     public String toString() {
         return "User{" +
-                "name='" + name + '\'' +
+                "id=" + id +
+                ", name='" + name + '\'' +
                 ", password='" + password + '\'' +
-                ", email='" + email + '\'' +
+                ", flag=" + flag +
                 ", randomcode='" + randomcode + '\'' +
-                ", date=" + date +
+                ", addtime=" + addtime +
+                ", email='" + email + '\'' +
                 '}';
     }
 }
