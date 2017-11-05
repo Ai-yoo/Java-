@@ -1,20 +1,17 @@
 package dao;
 
 import domain.User;
-import util.ConnectionManager;
-import util.EncodeMD5;
-import util.Time;
+import util.JdbcUtil;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Date;
-import java.util.Random;
 
 public class UserDao {
     public void add(User user) {
-       Connection conn = ConnectionManager.getConnection();
+       Connection conn = JdbcUtil.getInstance().getConnection();
         PreparedStatement ps=null;
         String sql = "insert into user values(default,?,?,1,?,?,?)";
         try {
@@ -22,23 +19,18 @@ public class UserDao {
             ps.setString(1, user.getName());
             ps.setString(2, user.getPassword());
             ps.setString(3, user.getRandomcode());
-            ps.setObject(4, user.getDate());
+            ps.setObject(4, user.getAddtime());
             ps.setString(5, user.getEmail());
             ps.execute();
         } catch (SQLException e) {
             e.printStackTrace();
         }finally {
-            try {
-                conn.close();
-                ps.close();
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
+            JdbcUtil.releaseResources(conn, ps, null);
         }
     }
 
     public void update(String name) {
-        Connection conn = ConnectionManager.getConnection();
+        Connection conn = JdbcUtil.getInstance().getConnection();
         PreparedStatement ps = null;
         String sql = "update user set flag=0 where name=?";
         try {
@@ -48,16 +40,11 @@ public class UserDao {
         } catch (SQLException e) {
             e.printStackTrace();
         }finally {
-            try {
-                conn.close();
-                ps.close();
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
+            JdbcUtil.releaseResources(conn, ps, null);
         }
     }
     public void delete(String name) {
-        Connection conn = ConnectionManager.getConnection();
+        Connection conn = JdbcUtil.getInstance().getConnection();
         PreparedStatement ps = null;
         String sql = "delete from user where name=?";
         try {
@@ -67,17 +54,12 @@ public class UserDao {
         } catch (SQLException e) {
             e.printStackTrace();
         }finally {
-            try {
-                conn.close();
-                ps.close();
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
+            JdbcUtil.releaseResources(conn, ps, null);
         }
     }
 
     public boolean login(String username, String password) {
-        Connection conn = ConnectionManager.getConnection();
+        Connection conn = JdbcUtil.getInstance().getConnection();
         PreparedStatement ps = null;
         ResultSet rs = null;
         String sql="select * from user where name=? and password=?";
@@ -98,19 +80,13 @@ public class UserDao {
         } catch (SQLException e) {
             e.printStackTrace();
         }finally {
-            try {
-                conn.close();
-                ps.close();
-                rs.close();
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
+            JdbcUtil.releaseResources(conn, ps, rs);
         }
         return false;
     }
 
     public Date select(String name) {
-        Connection conn = ConnectionManager.getConnection();
+        Connection conn = JdbcUtil.getInstance().getConnection();
         PreparedStatement ps = null;
         ResultSet rs = null;
         String sql="select addtime from user where name=?";
@@ -124,6 +100,8 @@ public class UserDao {
             }
         } catch (SQLException e) {
             e.printStackTrace();
+        }finally {
+            JdbcUtil.releaseResources(conn, ps, rs);
         }
         return null;
     }
