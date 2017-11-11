@@ -18,19 +18,19 @@
     <div class="int">
       <label for="username">用户名:</label>
       <!-- 为每个需要的元素添加required -->
-      <input type="text" id="username" class="required" />
+      <input type="text" id="username" class="required" name="username"/>
     </div>
     <div class="int">
       <label for="password">密码:</label>
       <!-- 为每个需要的元素添加required -->
-      <input type="password" id="password" class="required" />
+      <input type="password" id="password" class="required" name="password"/>
     </div>
     <div class="int">
       <label for="email">邮箱:</label>
-      <input type="text" id="email" class="required" />
+      <input type="text" id="email" class="required" name="email"/>
     </div>
     <div class="sub">
-    <input type="submit" value="提交" id="send">
+    <input type="submit" value="提交" id="send" onclick="this.disabled=true; this.value='提交中...';">
     <input type="reset" value="重置" id="res">
     </div>
   </div>
