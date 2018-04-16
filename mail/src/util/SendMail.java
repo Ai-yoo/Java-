@@ -44,11 +44,14 @@ public class SendMail {
 //            msg.setText(strBody.toString());
             msg.setContent(strBody.toString(),"text/html;charset=UTF-8");
             msg.setSentDate(new Date());
+            //发邮箱件
             msg.setFrom(new InternetAddress("1958321982@qq.com"));
 
             transport = session.getTransport();
-            transport.connect("smtp.qq.com", "1958321982@qq.com", "arxfbblucvleegcg");
+            //发件邮箱
+            transport.connect("smtp.qq.com", "1958321982@qq.com", "your授权码");
 
+            //收件邮箱
             transport.sendMessage(msg, new Address[] { new InternetAddress("18846054508@163.com") });
         } catch (GeneralSecurityException e) {
             e.printStackTrace();
