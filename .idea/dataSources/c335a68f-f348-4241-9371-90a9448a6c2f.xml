@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataSource name="mail@localhost">
+  <database-model serializer="dbm" rdbms="MYSQL" format-version="4.9">
+    <root id="1">
+      <ServerVersion>5.0</ServerVersion>
+      <DefaultCasing>lower/lower</DefaultCasing>
+    </root>
+    <schema id="2" parent="1" name="blog"/>
+    <schema id="3" parent="1" name="book"/>
+    <schema id="4" parent="1" name="dangdang"/>
+    <schema id="5" parent="1" name="demo"/>
+    <schema id="6" parent="1" name="du"/>
+    <schema id="7" parent="1" name="information_schema"/>
+    <schema id="8" parent="1" name="mail">
+      <Current>1</Current>
+      <Visible>1</Visible>
+    </schema>
+    <schema id="9" parent="1" name="medical"/>
+    <schema id="10" parent="1" name="mysql"/>
+    <schema id="11" parent="1" name="news"/>
+    <schema id="12" parent="1" name="shop"/>
+    <schema id="13" parent="1" name="test"/>
+    <schema id="14" parent="1" name="url"/>
+    <schema id="15" parent="1" name="weka"/>
+    <table id="16" parent="8" name="user"/>
+    <column id="17" parent="16" name="id">
+      <Position>1</Position>
+      <DataType>INT(10)|4s</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="18" parent="16" name="name">
+      <Position>2</Position>
+      <DataType>VARCHAR(255)|12s</DataType>
+    </column>
+    <column id="19" parent="16" name="password">
+      <Position>3</Position>
+      <DataType>VARCHAR(255)|12s</DataType>
+    </column>
+    <column id="20" parent="16" name="flag">
+      <Position>4</Position>
+      <DataType>INT(10)|4s</DataType>
+    </column>
+    <column id="21" parent="16" name="randomcode">
+      <Position>5</Position>
+      <DataType>VARCHAR(255)|12s</DataType>
+    </column>
+    <column id="22" parent="16" name="addtime">
+      <Position>6</Position>
+      <DataType>DATE(10)|91s</DataType>
+    </column>
+    <column id="23" parent="16" name="email">
+      <Position>7</Position>
+      <DataType>VARCHAR(255)|12s</DataType>
+    </column>
+    <index id="24" parent="16" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>id</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="25" parent="16" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+  </database-model>
+</dataSource>
